@@ -1,5 +1,30 @@
-.main { 
-    display: flex;
-    align-items: center;
-    
+.main {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.mobile {
+  position: relative;
+  z-index: 1;
+}
+
+.mobile img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px;
+  z-index: -1;
+}
+
+.title h1 {
+  font-size: 34px;
+  color: #fff;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+  width: 340px;
+}
+
+.course {
+  flex: 1;
 }
