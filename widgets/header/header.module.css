@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logotype img {
+  width: 200px;
+  cursor: pointer;
+}
+
+.navigation {
+  display: flex;
+  gap: 14px;
+}
+
+.navigation a {
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: rgb(28, 70, 142);
+}
