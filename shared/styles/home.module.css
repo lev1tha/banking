@@ -71,13 +71,56 @@
 }
 
 .suggestions {
-  padding: 24px 16px;
+  background-image: url("../../public/assets/image/backgroun.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  padding: 24px 36px;
   margin-top: 35px;
-  background-color: #295E95;
-  height: 200px;
+
+  height: 320px;
   border-radius: 34px;
   box-shadow: 1px 8px 12px -6px black;
   width: 106%;
   margin-bottom: 40px;
+
+  display: flex;
+  justify-content: space-between;
 }
 
+.benefit{ 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.benefit button{ 
+  width: 100%;
+  max-width: 130px;
+  border: none;
+  padding: 20px 24px;
+  border-radius: 8px;
+  background-color: #FFDD2C;
+  text-align: center;
+}
+
+.benefit ul {
+  list-style: none;
+  width: 440px;
+  max-width: 100%;
+}
+
+.benefit ul li {
+  margin-top: 20px;
+
+  font-size: 18px;
+  text-transform: capitalize;
+  font-weight: 400;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+}
+
+.visual img{
+  width: 350px;
+
+}

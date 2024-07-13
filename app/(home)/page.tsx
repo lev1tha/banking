@@ -4,6 +4,8 @@ import Header from "@/widgets/header/Header";
 import Courses from "@/shared/components/Course";
 import style from "@/shared/styles/home.module.css";
 
+import Link from "next/link";
+
 const Home = () => {
   return (
     <div>
@@ -37,7 +39,22 @@ const Home = () => {
         </div>
       </div>
       <div className={style.suggestions}>
-        <img src="./assets/svg/paper.svg" alt="" />
+        <div className={style.benefit}>
+          <ul>
+            <li>
+              Возможность открытия национальной карты Элкарт и международные
+              карты Visa и Mastercard
+            </li>
+            <li>Бесконтактные платежи</li>
+            <li>Доступные тарифы</li>
+          </ul>
+          <Link href={"https://www.rsk.kg/ru/payment-cards?for_who=individual"}>
+            <button>Подробнее</button>
+          </Link>
+        </div>
+        <div className={style.visual}>
+          <img src="./assets/image/cards.png" alt="" />
+        </div>
       </div>
     </div>
   );
