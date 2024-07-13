@@ -1,0 +1,51 @@
+.course {
+  display: flex;
+  flex-direction: column;
+  padding-top: 34px;
+}
+
+.denominations {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 40px;
+}
+
+.denominations:first-child {
+  margin-top: 0;
+}
+
+.images {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.images:last-child {
+  margin-right: 20px;
+}
+
+.flag img {
+  width: 44px;
+  border-radius: 8px;
+}
+
+.sale {
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.buy {
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.nowday {
+  margin-top: 34px;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+}
