@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import style from "./sign.module.css";
 import InputForm from "@/util/input/InputForm";
+import { $api } from "@/shared/lib/api/api";
 
 interface InputArrayType {
   [key: string]: string;
@@ -29,6 +30,10 @@ const Sing = () => {
     }));
   };
 
+  const onSendAuth = () => {
+    $api.post("auth/register/", data);
+  };
+
   return (
     <div className={style.container_sign}>
       <div className={style.modal}>
@@ -44,7 +49,7 @@ const Sing = () => {
                 onChange={handleInputChange}
               />
             ))}
-            <button>Зарегистрироваться</button>
+            <button onClick={onSendAuth}>Зарегистрироваться</button>
           </div>
         </div>
       </div>
