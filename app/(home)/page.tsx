@@ -56,6 +56,7 @@ const Home = () => {
           <img src="./assets/image/cards.png" alt="" />
         </div>
       </div>
+      
     </div>
   );
 };
