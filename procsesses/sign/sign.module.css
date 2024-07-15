@@ -70,3 +70,21 @@
   font-size: 18px;
   border-radius: 16px;
 }
+
+.route { 
+  display: flex;
+  justify-content: center;
+}
+
+.route button {
+  margin-top: 14px;
+  background-color: transparent;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  border-radius: 16px;
+  cursor: pointer;
+  border-bottom: .5px solid black;
+  border-radius: 0;
+  padding: 6px 0;
+  width: fit-content;
+}

@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 
 import Header from "@/widgets/header/Header";
@@ -7,6 +8,7 @@ import style from "@/shared/styles/home.module.css";
 import Link from "next/link";
 
 const Home = () => {
+
   return (
     <div>
       <Header />
@@ -56,7 +58,6 @@ const Home = () => {
           <img src="./assets/image/cards.png" alt="" />
         </div>
       </div>
-      
     </div>
   );
 };
