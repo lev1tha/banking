@@ -30,7 +30,8 @@ const Courses: React.FC = () => {
     axios
       .get(COURSEDOLLAR, {
         headers: {
-          Authorization: "Bearer rBpWiZ0x02HvyVRVcYi2tjm0Sfmx2PnGyNhnZWdt349891f1",
+          Authorization:
+            "Bearer rBpWiZ0x02HvyVRVcYi2tjm0Sfmx2PnGyNhnZWdt349891f1",
         },
       })
       .then((response) => {

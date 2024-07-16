@@ -49,3 +49,27 @@
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
 }
+
+@media (max-width: 1050px) {
+  .course {
+    padding-top: 24px;
+  }
+
+  .denominations {
+    margin-top: 20px;
+    gap: 30px;
+  }
+
+  .nowday {
+    margin-top: 14px;
+    font-size: 14px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+  }
+}
+
+@media (max-width: 950px) {
+  .nowday {
+    display: none;
+  }
+}

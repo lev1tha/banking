@@ -10,7 +10,7 @@ import Link from "next/link";
 const Home = () => {
 
   return (
-    <div>
+    <>
       <Header />
       <div className={style.main}>
         <div className={style.mobile}>
@@ -58,7 +58,7 @@ const Home = () => {
           <img src="./assets/image/cards.png" alt="" />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

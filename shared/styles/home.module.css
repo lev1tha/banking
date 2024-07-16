@@ -27,7 +27,7 @@
 }
 
 .title h1 {
-  font-size: 34px;
+  font-size: calc(34px - 5px);
   color: #fff;
   font-weight: 600;
   font-family: "Montserrat", sans-serif;
@@ -45,7 +45,7 @@
 .course h1 {
   font-family: "Montserrat", sans-serif;
   color: #111;
-  font-size: 34px;
+  font-size: calc(34px - 5%);
   font-weight: 500;
 }
 
@@ -88,19 +88,19 @@
   justify-content: space-between;
 }
 
-.benefit{ 
+.benefit {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.benefit button{ 
+.benefit button {
   width: 100%;
   max-width: 130px;
   border: none;
   padding: 20px 24px;
   border-radius: 8px;
-  background-color: #FFDD2C;
+  background-color: #ffdd2c;
   text-align: center;
 }
 
@@ -120,7 +120,147 @@
   font-family: "Montserrat", sans-serif;
 }
 
-.visual img{
+.visual img {
   width: 350px;
+}
 
+@media (max-width: 1100px) {
+  .main {
+    gap: 50px;
+  }
+
+  .suggestions {
+    width: 104%;
+  }
+}
+
+@media (max-width: 1050px) {
+  .title h1 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    width: 300px;
+    margin-bottom: 8px;
+  }
+
+  .suptitle {
+    font-size: 12px;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    width: 240px;
+  }
+
+  .mobile {
+    width: 320px;
+    height: 320px;
+  }
+
+  .mobile img {
+    width: 320px;
+    height: 320px;
+  }
+
+  .course h1 {
+    font-size: 24px;
+  }
+
+  .couse_box {
+    margin-top: 12px;
+    height: 280px;
+    width: 370px;
+  }
+
+  .textcourses {
+    font-size: 16px;
+  }
+
+  .benefit {
+    width: 320px;
+  }
+}
+
+@media (max-width: 950px) {
+  .couse_box {
+    margin-top: 12px;
+    height: 280px;
+    width: 340px;
+  }
+}
+
+@media (max-width: 800px) {
+  .main {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 770px) {
+  .main {
+    flex-wrap: wrap;
+  }
+
+  .mobile {
+    flex: 1;
+  }
+
+  .mobile h1 {
+    font-size: 36px;
+    width: 500px;
+  }
+
+  .mobile p {
+    font-size: 24px;
+    width: 400px;
+  }
+
+  .mobile img {
+    width: 100%;
+  }
+
+  .course {
+    width: 100%;
+  }
+
+  .couse_box {
+    width: 100%;
+  }
+
+  .suggestions {
+    width: 100%;
+  }
+
+  .benefit ul {
+    list-style: none;
+    width: 264px;
+    max-width: 100%;
+  }
+
+  .couse_box {
+    height: 240px;
+  }
+}
+
+@media (max-width: 740px) {
+  .suggestions {
+    flex-direction: column;
+  }
+
+  .benefit {
+    width: 100%;
+  }
+
+  .benefit ul {
+    width: 100%;
+    text-align: center;
+  }
+
+  .benefit button {
+    margin-top: 44px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .visual img {
+    display: none;
+  }
 }

@@ -13,3 +13,30 @@
   max-width: 100%;
   margin: 0 auto;
 }
+
+@media (max-width: 1050px) {
+  .container {
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 950px) {
+  .container {
+    width: 680px;
+  }
+}
+
+@media (max-width: 800px){ 
+  .container {
+    width: 660px;
+  }
+}
+
+@media (max-width: 740px){
+  .container{ 
+    width: 500px;
+  }
+}

@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
 }
 
@@ -20,4 +20,11 @@
   font-size: 14px;
   text-transform: uppercase;
   color: rgb(28, 70, 142);
+}
+
+@media (max-width: 980px) {
+  .header {
+    /* justify-content: space-around; */
+    gap: 16px;
+  }
 }
