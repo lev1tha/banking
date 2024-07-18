@@ -20,14 +20,15 @@
 
   margin-top: 10px;
   width: 420px;
-  height: 660px;
+  
+
   border-radius: 24px;
   background-color: white;
   box-shadow: 1px 8px 15px -8px rgb(191, 200, 254);
 }
 
 .modal_container {
-  padding: 34px 24px;
+  padding: 34px 74px;
 }
 
 .logo img {
@@ -63,12 +64,16 @@
 .form button {
   margin-top: 24px;
   width: 300px;
-  padding: 14px 0;
+  padding: 12px 0;
   border: none;
   background-color: #ffdd2c;
   font-family: "Montserrat", sans-serif;
-  font-size: 18px;
+  font-size: 14px;
   border-radius: 16px;
+}
+
+.form button:last-child{ 
+  margin-top: 10px;
 }
 
 .route { 

@@ -1,0 +1,33 @@
+.date_container {
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pogination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pogination button {
+  padding: 14px 12px;
+  border-radius: 16px;
+  border: 0.4px solid rgb(28, 70, 142);
+  background: transparent;
+  width: 124px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(28, 70, 142);
+}
+
+.pogination span {
+  font-family: "Montserrat", sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: rgb(28, 70, 142);
+}
+
