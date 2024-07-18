@@ -20,7 +20,6 @@
 
   margin-top: 10px;
   width: 420px;
-  
 
   border-radius: 24px;
   background-color: white;
@@ -72,11 +71,11 @@
   border-radius: 16px;
 }
 
-.form button:last-child{ 
+.form button:last-child {
   margin-top: 10px;
 }
 
-.route { 
+.route {
   display: flex;
   justify-content: center;
 }
@@ -88,8 +87,14 @@
   font-size: 12px;
   border-radius: 16px;
   cursor: pointer;
-  border-bottom: .5px solid black;
+  border-bottom: 0.5px solid black;
   border-radius: 0;
   padding: 6px 0;
   width: fit-content;
+}
+
+.error {
+  color: red;
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
 }
