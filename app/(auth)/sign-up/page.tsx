@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import SignUp from "@/procsesses/signup";
 
 const page = () => {
   return (
-    <div>Sign Up</div>
-  )
-}
+    <div>
+      <SignUp />
+    </div>
+  );
+};
 
-export default page
+export default page;

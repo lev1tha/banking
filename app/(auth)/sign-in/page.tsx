@@ -1,10 +1,8 @@
 import React from "react";
-import Sign from "@/procsesses/sign";
+import SignIn from "@/procsesses/sign";
 
 const page = () => {
-  return (
-      <Sign />
-  );
+  return <SignIn />;
 };
 
 export default page;

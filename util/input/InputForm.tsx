@@ -33,12 +33,7 @@ const InputForm: React.FC<PropsInputT> = ({
   }
 
   return (
-    <input
-      placeholder={placeholder}
-      id={id}
-      type={type}
-      onChange={onChange}
-    />
+    <input placeholder={placeholder} id={id} type={type} onChange={onChange} />
   );
 };
 

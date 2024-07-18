@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import style from "./sign.module.css";
+import style from "./signin.module.css";
 import InputForm from "@/util/input/InputForm";
 import { $api } from "@/shared/lib/api/api";
 import { useRouter } from "next/navigation";
@@ -58,7 +58,9 @@ const Sing = () => {
     const currentErrors: ErrorArrayType = {};
     steps[currentStep].forEach((item) => {
       if (!data[item.id]) {
-        currentErrors[item.id] = `${item.value} обязательное поле для заполнения`;
+        currentErrors[
+          item.id
+        ] = `${item.value} обязательное поле для заполнения`;
       }
     });
 
@@ -96,7 +98,7 @@ const Sing = () => {
   };
 
   const onClickRoute = () => {
-    route.push("/sign-in");
+    route.push("/sign-up");
   };
 
   const onSendAuth = () => {

@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: all 0.6s ease-in-out;
+  transition: all 0.8s ease-in-out;
   outline: none;
 }
 
@@ -29,14 +29,14 @@
   }
 }
 
-@media (max-width: 800px){ 
+@media (max-width: 800px) {
   .container {
     width: 660px;
   }
 }
 
-@media (max-width: 740px){
-  .container{ 
+@media (max-width: 740px) {
+  .container {
     width: 500px;
   }
 }

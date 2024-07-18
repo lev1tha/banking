@@ -1,0 +1,87 @@
+.container_sign {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 0;
+  z-index: -1;
+  background-image: url("../../public/assets/image/backgroun.jpg");
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  margin-top: 10px;
+  width: 420px;
+
+  border-radius: 24px;
+  background-color: white;
+  box-shadow: 1px 8px 15px -8px rgb(191, 200, 254);
+}
+
+.modal_container {
+  padding: 34px 74px;
+}
+
+.logo img {
+  width: 164px;
+}
+
+.form input {
+  display: block;
+  padding: 0 12px;
+
+  border: none;
+  border-bottom: 1px solid rgb(158, 172, 251);
+  height: 35px;
+  margin-top: 20px;
+  border-radius: 6px;
+  width: 300px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.form input::placeholder {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.button {
+  margin-top: 10px;
+  width: 300px;
+  padding: 12px 0;
+  border: none;
+  background-color: #ffdd2c;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  border-radius: 16px;
+}
+
+.route {
+  display: flex;
+  justify-content: center;
+}
+
+.route button {
+  margin-top: 12px;
+  background-color: transparent;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  border-bottom: 0.5px solid black;
+  border-radius: 0;
+  padding: 6px 0;
+  width: fit-content;
+}
