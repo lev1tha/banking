@@ -9,59 +9,84 @@ interface InputArrayType {
   [key: string]: string;
 }
 
-const steps = [
+interface StepItem {
+  id: string;
+  value: string;
+  type: string;
+  options?: { value: string; label: string }[];
+}
+
+const steps: StepItem[][] = [
   [
-    { id: "first_name", value: "Name" },
-    { id: "last_name", value: "Surname" },
+    { id: "first_name", value: "Name", type: "text" },
+    { id: "last_name", value: "Surname", type: "text" },
   ],
   [
-    { id: "avatar", value: "Avatar" },
-    { id: "username", value: "Username" },
+    { id: "avatar", value: "Avatar", type: "text" },
+    { id: "username", value: "Username", type: "text" },
   ],
   [
-    { id: "date_of_birth", value: "Day of birthday: YYYY.MM.DD" },
-    { id: "phone", value: "Phone" },
+    {
+      id: "role",
+      value: "Role",
+      type: "select",
+      options: [
+        { value: "employee", label: "Сотрудник" },
+        { value: "client", label: "Клиент" },
+      ],
+    },
   ],
   [
-    { id: "email", value: "Mail" },
-    { id: "password1", value: "Password" },
-    { id: "password2", value: "Password Second" },
+    { id: "date_of_birth", value: "Day of birthday: YYYY.MM.DD", type: "date" },
+    { id: "phone", value: "Phone", type: "text" },
+  ],
+  [
+    { id: "email", value: "Mail", type: "email" },
+    { id: "password1", value: "Password", type: "password" },
+    { id: "password2", value: "Password Second", type: "password" },
   ],
 ];
 
 const Sing = () => {
-  const router = useRouter();
+  const route = useRouter();
   const [data, setData] = useState<InputArrayType>({});
-  const [step, setStep] = useState(0);
+  const [currentStep, setCurrentStep] = useState(0);
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { id, value } = event.target;
     setData((prevData) => ({
       ...prevData,
       [id]: value,
     }));
-  };
 
-  const handleNextStep = () => {
-    if (step < steps.length - 1) {
-      setStep(step + 1);
-    } else {
-      onSendAuth();
-    }
-  };
-
-  const handlePreviousStep = () => {
-    if (step > 0) {
-      setStep(step - 1);
+    if (id === "role" && value === "employee") {
+      if (steps.length === 5) {
+        steps.splice(3, 0, [
+          { id: "employee_id", value: "Employee ID", type: "text" },
+          { id: "department", value: "Department", type: "text" },
+        ]);
+      }
+    } else if (id === "role" && value !== "employee" && steps.length === 6) {
+      steps.splice(3, 1);
     }
   };
 
   const onClickRoute = () => {
-    router.push("/sign-in");
+    route.push("/sign-in");
   };
 
   const onSendAuth = () => {
     $api.post("auth/register/", data);
+  };
+
+  const handleNextStep = () => {
+    setCurrentStep((prevStep) => Math.min(prevStep + 1, steps.length - 1));
+  };
+
+  const handlePrevStep = () => {
+    setCurrentStep((prevStep) => Math.max(prevStep - 1, 0));
   };
 
   return (
@@ -69,22 +94,29 @@ const Sing = () => {
       <div className={style.modal}>
         <div className={style.modal_container}>
           <div className={style.logo}>
-            <img src="./assets/image/logotype.png" alt="Logo" />
+            <img src="./assets/image/logotype.png" alt="" />
           </div>
           <div className={style.form}>
-            {steps[step].map((item) => (
+            {steps[currentStep].map((item) => (
               <InputForm
                 key={item.id}
                 id={item.id}
                 placeholder={item.value}
+                type={item.type}
+                options={item.options}
                 onChange={handleInputChange}
               />
             ))}
             <div className={style.buttons}>
-              {step > 0 && <button onClick={handlePreviousStep}>Назад</button>}
-              <button onClick={handleNextStep}>
-                {step < steps.length - 1 ? "Продолжить" : "Зарегистрироваться"}
-              </button>
+              {currentStep > 0 && (
+                <button onClick={handlePrevStep}>Назад</button>
+              )}
+              {currentStep < steps.length - 1 && (
+                <button onClick={handleNextStep}>Продолжить</button>
+              )}
+              {currentStep === steps.length - 1 && (
+                <button onClick={onSendAuth}>Зарегистрироваться</button>
+              )}
             </div>
             <div className={style.route}>
               <button onClick={onClickRoute}>У меня есть аккаунт</button>
