@@ -56,6 +56,18 @@
   font-weight: 500;
 }
 
-.date:hover{ 
-  border-radius: 50%;
+.dayactive {
+  cursor: pointer;
+}
+
+.dayactive:hover {
+  border-radius: 14px;
+}
+
+.pastday {
+  cursor: no-drop;
+}
+
+.pastday:hover {
+  border-radius: 0%;
 }

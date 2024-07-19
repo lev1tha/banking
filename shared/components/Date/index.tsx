@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import style from "./date.module.css";
+import { cn } from "@udecode/cn";
 
 const getDaysInMonth = (month: number, year: number) => {
   return new Date(year, month + 1, 0).getDate();
@@ -74,11 +75,11 @@ const Calendar = () => {
             return (
               <div
                 key={index}
-                style={{
-                  backgroundColor: isPastDate(day) ? "#d3d3d3" : "white",
-                  cursor: isPastDate(day) ? "no-drop" : "pointer",
-                }}
-                className={style.date}
+                className={cn(
+                  isPastDate(day)
+                    ? `${style.pastday} ${style.date}`
+                    : `${style.dayactive} ${style.date}`
+                )}
               >
                 {day}
               </div>
