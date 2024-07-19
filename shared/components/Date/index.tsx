@@ -1,14 +1,16 @@
 "use client";
 import React, { useState } from "react";
-import style from "./date.module.css"
+import style from "./date.module.css";
 
-const getDaysInMonth = (month: any, year: any) => {
+const getDaysInMonth = (month: number, year: number) => {
   return new Date(year, month + 1, 0).getDate();
 };
 
 const Calendar = () => {
-  const currentYear = new Date().getFullYear();
-  const currentMonth = new Date().getMonth();
+  const today = new Date();
+  const currentYear = today.getFullYear();
+  const currentMonth = today.getMonth();
+  const currentDay = today.getDate();
 
   const [year, setYear] = useState(currentYear);
   const [month, setMonth] = useState(currentMonth);
@@ -48,6 +50,14 @@ const Calendar = () => {
     }
   };
 
+  const isPastDate = (day: number) => {
+    return (
+      year < currentYear ||
+      (year === currentYear && month < currentMonth) ||
+      (year === currentYear && month === currentMonth && day <= currentDay)
+    );
+  };
+
   return (
     <div className={style.date_container}>
       <div className={style.pogination}>
@@ -57,22 +67,24 @@ const Calendar = () => {
         </span>
         <button onClick={handleNextMonth}>Next</button>
       </div>
-      <div style={{ display: "flex", flexWrap: "wrap", width: "280px", }}>
-        {Array.from({ length: daysInMonth }, (_, index) => (
-          <div
-            key={index}
-            style={{
-              width: "40px",
-              height: "40px",
-              border: "1px solid black",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            {index + 1}
-          </div>
-        ))}
+      <div className={style.calendar_container}>
+        <div className={style.dates}>
+          {Array.from({ length: daysInMonth }, (_, index) => {
+            const day = index + 1;
+            return (
+              <div
+                key={index}
+                style={{
+                  backgroundColor: isPastDate(day) ? "#d3d3d3" : "white",
+                  cursor: isPastDate(day) ? "no-drop" : "pointer",
+                }}
+                className={style.date}
+              >
+                {day}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
