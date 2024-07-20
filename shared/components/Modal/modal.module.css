@@ -1,0 +1,7 @@
+.modal_container {
+  width: 400px;
+  height: 300px;
+  border: 1px solid black;
+  border-radius: 24px;
+  padding: 42px;
+}

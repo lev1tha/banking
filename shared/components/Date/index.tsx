@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import style from "./date.module.css";
 import { cn } from "@udecode/cn";
+import Modal from "../Modal/Modal";
 
 const getDaysInMonth = (month: number, year: number) => {
   return new Date(year, month + 1, 0).getDate();
@@ -12,9 +13,13 @@ const Calendar = () => {
   const currentYear = today.getFullYear();
   const currentMonth = today.getMonth();
   const currentDay = today.getDate();
+  let day: number;
 
   const [year, setYear] = useState(currentYear);
   const [month, setMonth] = useState(currentMonth);
+  const [significance, setSignificance] = useState<boolean>();
+  const [isModalCall, setIsModalCall] = useState<boolean>(false);
+  const [isSelectedDay, setSelectedDay] = useState<number | null>(null);
 
   const daysInMonth = getDaysInMonth(month, year);
 
@@ -59,6 +64,13 @@ const Calendar = () => {
     );
   };
 
+  const handleCallModal = (day: number, index: number) => {
+    if (!isPastDate(day)) {
+      setSelectedDay(index + 1);
+      setIsModalCall((prev) => !prev);
+    }
+  };
+
   return (
     <div className={style.date_container}>
       <div className={style.pogination}>
@@ -71,7 +83,7 @@ const Calendar = () => {
       <div className={style.calendar_container}>
         <div className={style.dates}>
           {Array.from({ length: daysInMonth }, (_, index) => {
-            const day = index + 1;
+            day = index + 1;
             return (
               <div
                 key={index}
@@ -80,6 +92,7 @@ const Calendar = () => {
                     ? `${style.pastday} ${style.date}`
                     : `${style.dayactive} ${style.date}`
                 )}
+                onClick={() => handleCallModal(day, index)}
               >
                 {day}
               </div>
@@ -87,6 +100,7 @@ const Calendar = () => {
           })}
         </div>
       </div>
+      {isModalCall && <Modal isSelectedDay={isSelectedDay} />}
     </div>
   );
 };
