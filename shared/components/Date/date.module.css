@@ -62,7 +62,8 @@
 }
 
 .dayactive:hover {
-  border-radius: 14px;
+  background-color: rgb(28, 70, 142);
+  color: white;
 }
 
 .pastday {

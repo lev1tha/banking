@@ -1,6 +1,7 @@
 import React from "react";
 import style from "@/shared/styles/ordered.module.css";
 import Header from "@/widgets/header/Header";
+import Outlet from "@/shared/components/Outlet";
 
 const page = () => {
   return (
@@ -17,7 +18,7 @@ const page = () => {
           </nav>
         </div>
         <div className={style.outlet}>
-          outlet
+          <Outlet />
         </div>
       </div>
     </>

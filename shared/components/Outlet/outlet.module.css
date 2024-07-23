@@ -1,0 +1,18 @@
+.outlet_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.outlet_container input {
+  width: 340px;
+  margin-top: 24px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  border: 0.4px solid rgb(146, 146, 146);
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+}
+
+.outlet_container input:first-child {
+  margin-top: 0;
+}

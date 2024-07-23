@@ -53,6 +53,9 @@ const Sing = () => {
   const [data, setData] = useState<InputArrayType>({});
   const [errors, setErrors] = useState<ErrorArrayType>({});
   const [currentStep, setCurrentStep] = useState(0);
+  const [token, setToken] = useState<string>();
+
+  
 
   const validateStep = (): boolean => {
     const currentErrors: ErrorArrayType = {};
@@ -120,7 +123,7 @@ const Sing = () => {
     <div className={style.container_sign}>
       <div className={style.modal}>
         <div className={style.modal_container}>
-          <div className={style.logo}> 
+          <div className={style.logo}>
             <img src="./assets/image/logotype.png" alt="" />
           </div>
           <div className={style.form}>
