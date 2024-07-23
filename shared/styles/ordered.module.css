@@ -1,0 +1,37 @@
+.order_container{
+  display: flex;
+  gap: 34px;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid rgb(28, 70, 142);
+  width: 240px;
+}
+
+.layout_nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.layout_nav a {
+  margin-top: 16px;
+  text-align: start;
+  font-size: 16px;
+  color: rgb(28, 70, 142);
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+
+  width: fit-content;
+}
+
+.layout_nav a:first-child {
+  margin-top: 0;
+}
+
+.layout_nav a:hover {
+  font-size: 18px;
+  border-bottom: 0.2px solid rgb(28, 70, 142);
+}

@@ -75,7 +75,6 @@ const Sing = () => {
     setData((prevData) => ({
       ...prevData,
       [id]: value,
-      avatar: "../../public/assets/image/backgroun.jpg",
     }));
 
     if (errors[id]) {
@@ -121,7 +120,7 @@ const Sing = () => {
     <div className={style.container_sign}>
       <div className={style.modal}>
         <div className={style.modal_container}>
-          <div className={style.logo}>
+          <div className={style.logo}> 
             <img src="./assets/image/logotype.png" alt="" />
           </div>
           <div className={style.form}>
