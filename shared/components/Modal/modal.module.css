@@ -1,7 +1,40 @@
 .modal_container {
-  width: 400px;
-  height: 300px;
+  width: fit-content;
   border: 1px solid black;
   border-radius: 24px;
   padding: 42px;
+}
+
+.modal_container span {
+  font-size: 20px;
+  font-weight: 300;
+  font-family: "Montserrat", sans-serif;
+}
+
+.modal_container h1 {
+  font-size: 32px;
+  color: rgb(28, 70, 142);
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 14px;
+}
+
+.modal_table {
+  border-radius: 2px;
+}
+
+.modal_table tr td {
+  padding: 8px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+}
+
+.button {
+  margin-top: 18px;
+  padding: 16px 14px;
+  background-color: #ffdd2c;
+  border: none;
+  border-radius: 18px;
+  font-family: "Montserrat", sans-serif;
+  color: white;
 }
