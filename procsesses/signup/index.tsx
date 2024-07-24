@@ -1,9 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./signup.module.css";
 import InputForm from "@/util/input/InputForm";
 import { $api } from "@/shared/lib/api/api";
 import { useRouter } from "next/navigation";
+import { AxiosPromise, AxiosResponse } from "axios";
 
 interface InputArrayType {
   [key: string]: string;
@@ -24,6 +25,7 @@ const givenInput = [
 
 const SignUp = () => {
   const [data, setData] = useState<InputArrayType>({});
+  const [token, setToken] = useState<string>("");
   const route = useRouter();
 
   const OnChangeInput = (
@@ -37,12 +39,27 @@ const SignUp = () => {
   };
 
   const onSendAuth = () => {
-    $api.post("auth/login/", data);
+    $api
+      .post("auth/login/", data)
+      .then((response: AxiosResponse<{ token: string }>) => {
+        const { token } = response.data;
+        setToken(token);
+        route.push("/");
+      })
+      .catch((error) => {
+        console.error("Registration failed:", error);
+      });
+  };
+
+  const postLocalStorageToken = (token: string) => {
+    localStorage.setItem("token", token);
   };
 
   const onClickRoute = () => {
     route.push("/sign-in");
   };
+
+  postLocalStorageToken(token);
 
   return (
     <div className={style.container_sign}>

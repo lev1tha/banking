@@ -54,6 +54,7 @@ const Sing = () => {
   const [data, setData] = useState<InputArrayType>({});
   const [errors, setErrors] = useState<ErrorArrayType>({});
   const [currentStep, setCurrentStep] = useState(0);
+  const [token, setToken] = useState<string>(""); // State to hold the token
 
   const validateStep = (): boolean => {
     const currentErrors: ErrorArrayType = {};
@@ -103,8 +104,21 @@ const Sing = () => {
 
   const onSendAuth = () => {
     if (validateStep()) {
-      $api.post("auth/register/", data);
+      $api
+        .post("auth/register/", data)
+        .then((response: AxiosResponse<{ token: string }>) => {
+          const { token } = response.data;
+          setToken(token);
+          route.push("/");
+        })
+        .catch((error) => {
+          console.error("Registration failed:", error);
+        });
     }
+  };
+
+  const postLocalStorageToken = (token: string) => {
+    localStorage.setItem("token", token);
   };
 
   const handleNextStep = () => {
@@ -116,6 +130,8 @@ const Sing = () => {
   const handlePrevStep = () => {
     setCurrentStep((prevStep) => Math.max(prevStep - 1, 0));
   };
+
+  postLocalStorageToken(token);
 
   return (
     <div className={style.container_sign}>
