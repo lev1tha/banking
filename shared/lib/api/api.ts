@@ -6,6 +6,4 @@ export const $api = axios.create({
   baseURL: BASE_URL,
 });
 
-if (localStorage.length < 0) {
-  const $token = localStorage.getItem("token");
-}
+export const $token = localStorage.getItem("token");
