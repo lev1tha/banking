@@ -24,7 +24,7 @@
   gap: 14px;
 }
 
-.outlet_select{
+.outlet_select {
   margin-top: 20px;
 }
 
@@ -46,4 +46,15 @@
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-weight: 300;
+}
+
+.button {
+  margin-top: 22px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  padding: 14px 0;
+  border-radius: 14px;
+  border: 0.3px solid rgb(163, 163, 163);
+  background-color: #ffdd2c;
+  color: rgb(28, 70, 142);
 }

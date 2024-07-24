@@ -109,7 +109,7 @@ const Outlet = () => {
       banker: dataOutlet.banker,
       booking_start_time,
       booking_end_time,
-      client: $token
+      client: $token,
     };
 
     $api.post("booking/", bookingData);
@@ -175,12 +175,7 @@ const Outlet = () => {
         <label htmlFor="banker">Банкир:</label>
         <input id="banker" type="text" onChange={handleChangeValueInput} />
       </div>
-      <select className={style.outlet_select}>
-        {onShift.map((item, index) => (
-          <option key={index}>{item.user}</option>
-        ))}
-      </select>
-      <button onClick={handleOnSendBooking}>Отправить Заявку</button>
+      <button className={style.button} onClick={handleOnSendBooking}>Отправить Заявку</button>
     </div>
   );
 };
