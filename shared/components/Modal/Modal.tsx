@@ -31,40 +31,43 @@ const Modal: React.FC<ModalPropsT> = ({ isSelectedDay }) => {
       </span>
       <div className="modal_information">
         {error || (
-          <table border={1} className={style.modal_table}>
-            <tr>
-              <td></td>
-              <td>От</td>
-              <td>До</td>
-              <td>У кого</td>
-              <td>Кем</td>
-            </tr>
-            <tr>
-              <td>Время</td>
-              <td>16:00</td>
-              <td>18:00</td>
-              <td>Женишбеков</td>
-              <td>Алмаз уулу</td>
-            </tr>
-            <tr>
-              <td>Время</td>
-              <td>16:00</td>
-              <td>18:00</td>
-              <td>Женишбеков</td>
-              <td>Маткеримов</td>
-            </tr>
-            <tr>
-              <td>Время</td>
-              <td>16:00</td>
-              <td>18:00</td>
-              <td>Женишбеков</td>
-              <td>Элдосов</td>
-            </tr>
-          </table>
+          <>
+            <table border={1} className={style.modal_table}>
+              <tr>
+                <td></td>
+                <td>От</td>
+                <td>До</td>
+                <td>У кого</td>
+                <td>Кем</td>
+              </tr>
+              <tr>
+                <td>Время</td>
+                <td>16:00</td>
+                <td>18:00</td>
+                <td>Женишбеков</td>
+                <td>Алмаз уулу</td>
+              </tr>
+              <tr>
+                <td>Время</td>
+                <td>16:00</td>
+                <td>18:00</td>
+                <td>Женишбеков</td>
+                <td>Маткеримов</td>
+              </tr>
+              <tr>
+                <td>Время</td>
+                <td>16:00</td>
+                <td>18:00</td>
+                <td>Женишбеков</td>
+                <td>Элдосов</td>
+              </tr>
+            </table>
+
+            <button className={style.button} onClick={onClickRoute}>
+              Забранировать в этот день
+            </button>
+          </>
         )}
-        <button className={style.button} onClick={onClickRoute}>
-          Забранировать в этот день
-        </button>
       </div>
     </div>
   );
