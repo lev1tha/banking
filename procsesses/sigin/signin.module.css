@@ -38,6 +38,10 @@
   margin-top: 24px;
 }
 
+.form select{ 
+  width: 300px;
+}
+
 .form input {
   display: block;
   padding: 0 12px;

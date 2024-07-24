@@ -4,7 +4,7 @@ import style from "./input.module.css";
 interface PropsInputT {
   placeholder?: string;
   id: string;
-
+  className?: string;
   type?: string;
   options?: { value: string; label: string }[];
   onChange?: (
@@ -15,13 +15,14 @@ interface PropsInputT {
 const InputForm: React.FC<PropsInputT> = ({
   placeholder,
   id,
+  className,
   type = "text",
   options,
   onChange,
 }) => {
   if (type === "select" && options) {
     return (
-      <select id={id} className={style.select} onChange={onChange}>
+      <select className={className} id={id} onChange={onChange}>
         <option value="">{placeholder}</option>
         {options.map((option) => (
           <option key={option.value} value={option.value}>
