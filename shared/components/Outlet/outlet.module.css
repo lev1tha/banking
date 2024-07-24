@@ -16,3 +16,10 @@
 .outlet_container input:first-child {
   margin-top: 0;
 }
+
+.outlet_select {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+}

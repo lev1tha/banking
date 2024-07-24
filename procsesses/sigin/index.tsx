@@ -4,6 +4,7 @@ import style from "./signin.module.css";
 import InputForm from "@/util/input/InputForm";
 import { $api } from "@/shared/lib/api/api";
 import { useRouter } from "next/navigation";
+import { AxiosResponse } from "axios";
 
 interface InputArrayType {
   [key: string]: string;
@@ -53,9 +54,6 @@ const Sing = () => {
   const [data, setData] = useState<InputArrayType>({});
   const [errors, setErrors] = useState<ErrorArrayType>({});
   const [currentStep, setCurrentStep] = useState(0);
-  const [token, setToken] = useState<string>();
-
-  
 
   const validateStep = (): boolean => {
     const currentErrors: ErrorArrayType = {};
