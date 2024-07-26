@@ -175,7 +175,9 @@ const Outlet = () => {
         <label htmlFor="banker">Банкир:</label>
         <input id="banker" type="text" onChange={handleChangeValueInput} />
       </div>
-      <button className={style.button} onClick={handleOnSendBooking}>Отправить Заявку</button>
+      <button className={style.button} onClick={handleOnSendBooking}>
+        Отправить Заявку
+      </button>
     </div>
   );
 };

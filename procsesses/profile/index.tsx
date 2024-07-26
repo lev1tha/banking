@@ -1,9 +1,35 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import style from "./profile.module.css";
 import { $api } from "@/shared/lib/api/api";
 
-const Index = () => {
-  const [viewProfile, setViewProfile] = useState<object | null>(null);
+interface UserProfile {
+  first_name: string;
+  last_name: string;
+  username: string;
+  email: string;
+  role: string;
+  date_of_birth: string;
+  phone: string;
+  employee_id?: string;
+  department?: string;
+  [key: string]: any;
+}
+
+const translations: { [key: string]: string } = {
+  first_name: "Имя",
+  last_name: "Фамилия",
+  username: "Пользовательское имя",
+  email: "Электронная почта",
+  role: "Роль",
+  date_of_birth: "Дата рождения",
+  phone: "Номер телефона",
+  employee_id: "Партия",
+  department: "Вид правления",
+};
+
+const Index: React.FC = () => {
+  const [viewProfile, setViewProfile] = useState<UserProfile | null>(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -26,11 +52,22 @@ const Index = () => {
       });
   }, []);
 
+  console.log(viewProfile);
+
   return (
-    <div>
-      <h1>Profile Information</h1>
+    <div className={style.container_profile}>
+      <h1>Ваш профиль</h1>
       {viewProfile ? (
-        <pre>{JSON.stringify(viewProfile, null, 2)}</pre>
+        <div>
+          {Object.entries(viewProfile).map(
+            ([key, value]) =>
+              key !== "id" && (
+                <div key={key} className={style.profile_item}>
+                  <p>{translations[key] || key}:</p> <span>{value}</span>
+                </div>
+              )
+          )}
+        </div>
       ) : (
         <p>Loading...</p>
       )}

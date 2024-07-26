@@ -1,0 +1,32 @@
+.container_profile h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 34px;
+  font-weight: 400;
+  margin-bottom: 22px;
+}
+
+.container_profile p {
+  margin-top: 18px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.profile_item {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.profile_item p {
+  margin-top: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.profile_item span {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}

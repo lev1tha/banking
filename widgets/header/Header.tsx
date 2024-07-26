@@ -10,14 +10,14 @@ const Header = () => {
         <img src="./assets/image/rskBank.png" alt="" /> {/* logotype */}
       </div>
       <nav className={style.navigation}>
-        <Link href={"/about"}>
-          <p>О Компаний</p>
+        <Link href={"/date"}>
+          <p>Календарь</p>
         </Link>
-        <Link href={"/time"}>
-          <p>Выбор времени</p>
+        <Link href={"/ordered"}>
+          <p>Забронировать сразу</p>
         </Link>
-        <Link href={"/collaborator"}>
-          <p>Выбор Сотрудника</p>
+        <Link href={"/profile"}>
+          <p>Мой Профиль</p>
         </Link>
       </nav>
     </div>
