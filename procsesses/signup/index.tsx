@@ -43,7 +43,7 @@ const SignUp = () => {
       .post("auth/login/", data)
       .then((response: AxiosResponse<{ token: string }>) => {
         const { token } = response.data;
-        setToken(token);
+        localStorage.setItem("token", token);
         route.push("/");
       })
       .catch((error) => {
@@ -51,15 +51,9 @@ const SignUp = () => {
       });
   };
 
-  const postLocalStorageToken = (token: string) => {
-    localStorage.setItem("token", token);
-  };
-
   const onClickRoute = () => {
     route.push("/sign-in");
   };
-
-  postLocalStorageToken(token);
 
   return (
     <div className={style.container_sign}>

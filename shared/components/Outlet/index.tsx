@@ -112,7 +112,7 @@ const Outlet = () => {
       client: $token,
     };
 
-    $api.post("booking/", bookingData);
+    $api.post("bookings/", bookingData);
   };
 
   console.log(dataOutlet);
