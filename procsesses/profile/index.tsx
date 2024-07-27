@@ -46,13 +46,12 @@ const Index: React.FC = () => {
       })
       .then((response) => {
         setViewProfile(response.data);
+        localStorage.setItem("userInfo", JSON.stringify(response.data));
       })
       .catch((err) => {
         console.error("Failed to fetch profile:", err);
       });
   }, []);
-
-  console.log(viewProfile);
 
   return (
     <div className={style.container_profile}>

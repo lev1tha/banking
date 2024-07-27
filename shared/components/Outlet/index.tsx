@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import style from "@/shared/components/Outlet/outlet.module.css";
 import InputForm from "@/util/input/InputForm";
 import { $api, $token } from "@/shared/lib/api/api";
+import { defaultConfig } from "next/dist/server/config-shared";
 
 interface Option {
   value: string;
@@ -47,6 +48,8 @@ const Outlet = () => {
   const [onShift, setOnShift] = useState<Shift[]>([]);
   const [days, setDays] = useState<Option[]>([]);
 
+  const userName = localStorage.getItem("userInfo");
+
   useEffect(() => {
     $api.get("workschedule/").then((req) => setOnShift(req.data));
   }, []);
@@ -69,7 +72,6 @@ const Outlet = () => {
       ) {
         newDataOutlet.timeTo = undefined;
       }
-
       return newDataOutlet;
     });
 
@@ -90,8 +92,9 @@ const Outlet = () => {
     time?: string
   ): string | undefined => {
     if (!month || !day || !time) return undefined;
-    return `${day.padStart(2, "0")}.${month.padStart(2, "0")}.2024 ${time}`;
+    return `${day.padStart(2, "0")}:${month.padStart(2, "0")}:2024 ${time}`;
   };
+  defaultConfig;
 
   const handleOnSendBooking = () => {
     const booking_start_time = formatBookingDate(
@@ -112,10 +115,14 @@ const Outlet = () => {
       client: $token,
     };
 
-    $api.post("bookings/", bookingData);
+    $api.post("bookings/", bookingData, {
+      headers: {
+        Authorization: `Token ${$token}`,
+      },
+    });
   };
 
-  console.log(dataOutlet);
+  console.log(JSON.stringify(dataOutlet));
 
   return (
     <div className={style.outlet_container}>

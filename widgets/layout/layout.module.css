@@ -1,0 +1,17 @@
+.layout_profile {
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+  border-right: 0.4px solid black;
+}
+
+.layout_profile a {
+  margin: 8px 0;
+  text-decoration: none;
+}
+
+.layout_profile p {
+  color: rgb(28, 70, 142);
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+}
