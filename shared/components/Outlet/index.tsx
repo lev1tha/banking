@@ -48,11 +48,9 @@ const Outlet = () => {
   const [onShift, setOnShift] = useState<Shift[]>([]);
   const [days, setDays] = useState<Option[]>([]);
 
-  const userName = localStorage.getItem("userInfo");
-
-  useEffect(() => {
-    $api.get("workschedule/").then((req) => setOnShift(req.data));
-  }, []);
+  // useEffect(() => {
+  //   $api.get("workschedule/").then((req) => setOnShift(req.data));
+  // }, []);
 
   const handleChangeValueInput = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -62,7 +60,6 @@ const Outlet = () => {
       const newDataOutlet = {
         ...prevDataOutlet,
         [id]: value,
-        client: $token,
       };
 
       if (
@@ -108,11 +105,15 @@ const Outlet = () => {
       dataOutlet.timeTo
     );
 
+    const userInfo = localStorage.getItem("userInfo");
+    const username = userInfo && JSON.parse(userInfo).id;
+
     const bookingData = {
       banker: dataOutlet.banker,
       booking_start_time,
       booking_end_time,
-      client: $token,
+      date: `${dataOutlet.month}:${dataOutlet.day}`,
+      client: username,
     };
 
     $api.post("bookings/", bookingData, {
@@ -122,7 +123,7 @@ const Outlet = () => {
     });
   };
 
-  console.log(JSON.stringify(dataOutlet));
+  console.log($token);
 
   return (
     <div className={style.outlet_container}>

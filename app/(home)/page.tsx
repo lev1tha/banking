@@ -1,13 +1,50 @@
-"use client"
-import React from "react";
+"use client";
+import { useEffect, useState } from "react";
 
 import Header from "@/widgets/header/Header";
 import Courses from "@/shared/components/Course";
 import style from "@/shared/styles/home.module.css";
 
 import Link from "next/link";
+import { $api } from "@/shared/lib/api/api";
+
+interface UserProfile {
+  first_name: string;
+  last_name: string;
+  username: string;
+  email: string;
+  role: string;
+  date_of_birth: string;
+  phone: string;
+  employee_id?: string;
+  department?: string;
+  [key: string]: any;
+}
 
 const Home = () => {
+  const [viewProfile, setViewProfile] = useState<UserProfile | null>(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      return;
+    }
+
+    $api
+      .get("auth/profile/", {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      })
+      .then((response) => {
+        setViewProfile(response.data);
+        localStorage.setItem("userInfo", JSON.stringify(response.data));
+      })
+      .catch((err) => {
+        console.error("Failed to fetch profile:", err);
+      });
+  }, []);
 
   return (
     <>

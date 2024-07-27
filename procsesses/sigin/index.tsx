@@ -53,12 +53,13 @@ const Sing = () => {
   const route = useRouter();
   const [data, setData] = useState<InputArrayType>({});
   const [errors, setErrors] = useState<ErrorArrayType>({});
+  const [avatar, setAvatar] = useState<File | null>(null);
   const [currentStep, setCurrentStep] = useState(0);
 
   const validateStep = (): boolean => {
     const currentErrors: ErrorArrayType = {};
     steps[currentStep].forEach((item) => {
-      if (!data[item.id]) {
+      if (!data[item.id] && item.type !== "file") {
         currentErrors[
           item.id
         ] = `${item.value} обязательное поле для заполнения`;
@@ -73,10 +74,18 @@ const Sing = () => {
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { id, value } = event.target;
-    setData((prevData) => ({
-      ...prevData,
-      [id]: value,
-    }));
+
+    if (event.target instanceof HTMLInputElement && event.target.files) {
+      const files = event.target.files;
+      if (id === "avatar" && files.length > 0) {
+        setAvatar(files[0]);
+      }
+    } else {
+      setData((prevData) => ({
+        ...prevData,
+        [id]: value,
+      }));
+    }
 
     if (errors[id]) {
       setErrors((prevErrors) => ({
@@ -88,8 +97,9 @@ const Sing = () => {
     if (id === "role" && value === "banker") {
       if (steps.length === 4) {
         steps.splice(3, 0, [
-          { id: "employee_id", value: "Employee ID", type: "text" },
-          { id: "department", value: "Department", type: "text" },
+          { id: "experience", value: "Опыт работы", type: "text" },
+          { id: "position", value: "Позиция", type: "text" },
+          { id: "avatar", value: "Фото", type: "file" },
         ]);
       }
     } else if (id === "role" && value !== "banker" && steps.length === 5) {
@@ -103,8 +113,21 @@ const Sing = () => {
 
   const onSendAuth = () => {
     if (validateStep()) {
+      const formData = new FormData();
+      Object.keys(data).forEach((key) => {
+        formData.append(key, data[key]);
+      });
+
+      if (avatar) {
+        formData.append("avatar", avatar);
+      }
+
       $api
-        .post("auth/register/", data)
+        .post("auth/register/", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
         .then((response: AxiosResponse<{ token: string }>) => {
           const { token } = response.data;
           localStorage.setItem("token", token);
