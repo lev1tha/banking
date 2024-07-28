@@ -24,11 +24,11 @@ const Schedule: React.FC = () => {
     $api
       .get("work-schedules/", {
         headers: {
-          Authorization: $token,
+          Authorization: `Token ${$token}`,
         },
       })
       .then((req) => setDataWorker(req.data));
-  });
+  }, []);
 
   console.log(dataWorker);
   return <div>Schedule</div>;
