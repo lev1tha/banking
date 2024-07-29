@@ -1,0 +1,20 @@
+.table_footer {
+  display: flex;
+  gap: 114px;
+}
+
+.table_footer thead {
+  font-size: 24px;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  color: rgb(28, 70, 142);
+  margin-bottom: 24px;
+}
+
+.table_footer tr {
+  font-family: "Montserrat", sans-serif;
+  color: rgb(28, 70, 142);
+  font-size: 18px;
+  line-height: 1.6rem;
+  font-weight: 300;
+}

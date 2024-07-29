@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Header from "@/widgets/header/Header";
 import Courses from "@/shared/components/Course";
 import style from "@/shared/styles/home.module.css";
+import Footer from "@/widgets/footer";
 
 import Link from "next/link";
 import { $api } from "@/shared/lib/api/api";
@@ -95,6 +96,7 @@ const Home = () => {
           <img src="./assets/image/cards.png" alt="" />
         </div>
       </div>
+      <Footer />
     </>
   );
 };

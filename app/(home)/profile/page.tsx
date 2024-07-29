@@ -1,17 +1,17 @@
+"use client";
 import React from "react";
 import ProfileServer from "@/procsesses/profile/";
 import Header from "@/widgets/header/Header";
 import Layout from "@/widgets/layout/Layout";
 import style from "@/shared/styles/profile.module.css";
 
-const page = () => {
+const page = (childe: React.ReactNode) => {
+  const windowChecker = window.location.pathname;
+
+  console.log(windowChecker);
   return (
     <>
-      <Header />
-      <div className={style.container_profile}>
-        <Layout />
-        <ProfileServer />
-      </div>
+      <ProfileServer />
     </>
   );
 };

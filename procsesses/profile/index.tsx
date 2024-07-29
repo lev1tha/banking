@@ -11,6 +11,7 @@ interface UserProfile {
   role: string;
   date_of_birth: string;
   phone: string;
+  avatar?: string;
   employee_id?: string;
   department?: string;
   [key: string]: any;
@@ -24,6 +25,7 @@ const translations: { [key: string]: string } = {
   role: "Роль",
   date_of_birth: "Дата рождения",
   phone: "Номер телефона",
+  avatar: "Аватар",
   employee_id: "Партия",
   department: "Вид правления",
 };
@@ -58,9 +60,20 @@ const Index: React.FC = () => {
       <h1>Ваш профиль</h1>
       {viewProfile ? (
         <div>
+          {viewProfile.avatar && (
+            <div className={style.profile_item}>
+              <p>{translations["avatar"]}:</p>
+              <img
+                src={viewProfile.avatar}
+                alt="User Avatar"
+                className={style.avatar}
+              />
+            </div>
+          )}
           {Object.entries(viewProfile).map(
             ([key, value]) =>
-              key !== "id" && (
+              key !== "id" &&
+              key !== "avatar" && (
                 <div key={key} className={style.profile_item}>
                   <p>{translations[key] || key}:</p> <span>{value}</span>
                 </div>

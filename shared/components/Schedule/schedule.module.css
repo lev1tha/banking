@@ -1,0 +1,42 @@
+.schedules_container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 24px;
+}
+
+.worker_container {
+  border-radius: 18px;
+  border: 1px solid black;
+  width: 200px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 14px;
+  padding: 22px 16px;
+}
+
+.user_information h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.work_time span {
+  margin-top: 22px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 200;
+  margin-bottom: 32px;
+}
+
+.start_n_end_time span {
+  margin-top: 22px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgb(28, 70, 142);
+  text-align: start;
+}
