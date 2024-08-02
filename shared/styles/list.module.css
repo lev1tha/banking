@@ -1,0 +1,36 @@
+.container {
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 1px 2px 41px -20px;
+  width: 520px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card_banker {
+  border: 1px solid white;
+  border-radius: 14px;
+  margin-bottom: 24px;
+  padding: 22px;
+  width: 340px;
+  background-color: rgb(28, 70, 142);
+}
+
+.card_banker:last-child {
+  margin-bottom: 0px;
+}
+
+.card_banker h3 {
+  color: #ffdd2c;
+  font-family: "Montserrat", sans-serif;
+  font-size: 28px;
+}
+
+.card_banker p {
+  width: 320px;
+  color: #ffdd2c;
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+}

@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div className={style.header}>
       <div className={style.logotype}>
-        <img src="./assets/image/rskBank.png" alt="" /> {/* logotype */}
+        <img src="/assets/image/rskBank.png" alt="" /> {/* logotype */}
       </div>
       <nav className={style.navigation}>
         <Link href={"/date"}>
