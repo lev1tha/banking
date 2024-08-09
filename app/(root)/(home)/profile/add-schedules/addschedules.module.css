@@ -1,0 +1,26 @@
+.input_form {
+  width: 440px;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input_form input {
+  padding: 14px;
+  border-radius: 8px;
+  outline: none;
+  font-size: 16px;
+}
+
+.button_form {
+  margin-top: 40px;
+}
+
+.button_form button {
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  background-color: transparent;
+  padding: 14px;
+  border-radius: 16px;
+}

@@ -1,53 +1,69 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import { useState, MouseEvent } from "react";
+import style from "./addschedules.module.css";
 import { $api, $token } from "@/shared/lib/api/api";
-import InputForm from "@/util/input/InputForm";
 
-const Page = () => {
-  const [dataWorking, setDataWorking] = useState<Record<string, any>>({});
+interface RequestSchedules {
+  date: string;
+  start_time: string;
+  end_time: string;
+}
 
-  const InputValue = [
-    { id: "start_date", placeholder: "Начала смены время:" },
-    { id: "end_data", placeholder: "Конец смены время:" },
-  ];
+const AddSchedules: React.FC = () => {
+  const currentDate = new Date();
 
-  const onChangeData = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { id, value } = event.target;
-    setDataWorking((prevData) => ({
+  const [dataSchedules, setDataSchedules] = useState<RequestSchedules>({
+    date: `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1)
+      .toString()
+      .padStart(2, "0")}-${currentDate.getDate().toString().padStart(2, "0")}`,
+    start_time: "",
+    end_time: "",
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    setDataSchedules((prevData) => ({
       ...prevData,
       [id]: value,
     }));
   };
 
-  const handeSendAuth = () => {
-    useEffect(() => {
-      $api
-        .post("work-schedules/", dataWorking, {
-          headers: {
-            Authorization: `Token ${$token}`,
-          },
-        })
-        .then((response) => {
-          console.log("Data sent successfully:", response.data);
-        })
-        .catch((error) => {
-          console.error("Error sending data:", error);
-        });
-    }, []);
+  const handleSendSchedules = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    $api
+      .post("work-schedules/", dataSchedules, {
+        headers: {
+          Authorization: `Token ${$token}`,
+        },
+      })
+      .then((req) => console.log(req.status))
+      .catch((error) => console.error("Error sending schedules:", error));
   };
 
   return (
-    <div>
-      <>
-        {InputValue.map((item: any, index: number) => (
-          <InputForm id={item.id} onChange={onChangeData} />
-        ))}
-      </>
-      <button onClick={handeSendAuth}>Send</button>
+    <div className={style.container}>
+      <div className={style.input_form}>
+        <input
+          type="text"
+          placeholder="Начало смены"
+          id="start_time"
+          value={dataSchedules.start_time}
+          onChange={handleInputChange}
+        />
+        <input
+          type="text"
+          placeholder="Конец смены"
+          id="end_time"
+          value={dataSchedules.end_time}
+          onChange={handleInputChange}
+        />
+      </div>
+      <div className={style.button_form}>
+        <button onClick={handleSendSchedules}>Отправить</button>
+      </div>
     </div>
   );
 };
 
-export default Page;
+export default AddSchedules;

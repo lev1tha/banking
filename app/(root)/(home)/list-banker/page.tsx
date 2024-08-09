@@ -7,7 +7,7 @@ import style from "@/shared/styles/list.module.css";
 
 interface Banker {
   id: number;
-  name: string;
+  username: string;
   position: string;
   email: string;
 }
@@ -32,9 +32,8 @@ const Index: React.FC = () => {
       <div className={style.container}>
         {bankers.map((banker) => (
           <div key={banker.id} className={style.card_banker}>
-            <h3>{banker.name}</h3>
+            <h3>{banker.username}</h3>
             <p>{banker.position}</p>
-            <p>{banker.email}</p>
           </div>
         ))}
       </div>
