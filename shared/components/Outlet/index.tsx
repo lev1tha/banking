@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import style from "@/shared/components/Outlet/outlet.module.css";
 import InputForm from "@/util/input/InputForm";
-import { $api, $token } from "@/shared/lib/api/api";
+import { $api } from "@/shared/lib/api/api";
 import { defaultConfig } from "next/dist/server/config-shared";
 
 interface Option {
@@ -47,6 +47,7 @@ const Outlet = () => {
   const [dataOutlet, setDataOutlet] = useState<DataOutlet>({});
   const [onShift, setOnShift] = useState<Shift[]>([]);
   const [days, setDays] = useState<Option[]>([]);
+
 
   // useEffect(() => {
   //   $api.get("workschedule/").then((req) => setOnShift(req.data));
@@ -116,14 +117,8 @@ const Outlet = () => {
       client: username,
     };
 
-    $api.post("bookings/", bookingData, {
-      headers: {
-        Authorization: `Token ${$token}`,
-      },
-    });
+    $api.post("bookings/", bookingData);
   };
-
-  console.log($token);
 
   return (
     <div className={style.outlet_container}>

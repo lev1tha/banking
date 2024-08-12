@@ -1,5 +1,5 @@
 "use client";
-import { $api, $token } from "@/shared/lib/api/api";
+import { $api} from "@/shared/lib/api/api";
 import React, { useState, useEffect } from "react";
 import style from "./schedule.module.css";
 
@@ -59,11 +59,7 @@ const Schedule: React.FC = () => {
 
   useEffect(() => {
     $api
-      .get("work-schedules/", {
-        headers: {
-          Authorization: `Token ${$token}`,
-        },
-      })
+      .get("work-schedules/",)
       .then((req) => setDataWorker(req.data));
   }, []);
 

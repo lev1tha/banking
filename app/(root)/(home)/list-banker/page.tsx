@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { $api, $token } from "@/shared/lib/api/api";
+import { $api} from "@/shared/lib/api/api";
 import Header from "@/widgets/header/Header";
 import style from "@/shared/styles/list.module.css";
 
@@ -17,11 +17,7 @@ const Index: React.FC = () => {
 
   useEffect(() => {
     $api
-      .get("bankers", {
-        headers: {
-          Authorization: `Token ${$token}`,
-        },
-      })
+      .get("bankers")
       .then((response) => setBankers(response.data))
       .catch((error) => console.error(error));
   }, []);

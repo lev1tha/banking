@@ -123,11 +123,7 @@ const Sing = () => {
       }
 
       $api
-        .post("auth/register/", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
+        .post("auth/register/", formData)
         .then((response: AxiosResponse<{ token: string }>) => {
           const { token } = response.data;
           localStorage.setItem("token", token);

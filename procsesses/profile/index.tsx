@@ -41,11 +41,7 @@ const Index: React.FC = () => {
     }
 
     $api
-      .get("auth/profile/", {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      })
+      .get("auth/profile/")
       .then((response) => {
         setViewProfile(response.data);
         localStorage.setItem("userInfo", JSON.stringify(response.data));

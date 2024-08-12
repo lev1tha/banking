@@ -1,7 +1,7 @@
 "use client";
 import { useState, MouseEvent } from "react";
 import style from "./addschedules.module.css";
-import { $api, $token } from "@/shared/lib/api/api";
+import { $api } from "@/shared/lib/api/api";
 
 interface RequestSchedules {
   date: string;
@@ -32,11 +32,7 @@ const AddSchedules: React.FC = () => {
     e.preventDefault();
 
     $api
-      .post("work-schedules/", dataSchedules, {
-        headers: {
-          Authorization: `Token ${$token}`,
-        },
-      })
+      .post("work-schedules/", dataSchedules)
       .then((req) => console.log(req.status))
       .catch((error) => console.error("Error sending schedules:", error));
   };

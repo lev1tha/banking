@@ -2,21 +2,15 @@
 import React, { useEffect, useState } from "react";
 import style from "./layout.module.css";
 import Link from "next/link";
-import { $api, $token } from "@/shared/lib/api/api";
+import { $api } from "@/shared/lib/api/api";
 
 const Layout: React.FC = () => {
   const [banker, setBankder] = useState<string>("");
 
   useEffect(() => {
-    $api
-      .get("auth/profile/", {
-        headers: {
-          Authorization: `Token ${$token}`,
-        },
-      })
-      .then((response) => {
-        setBankder(response.data.role);
-      });
+    $api.get("auth/profile/").then((response) => {
+      setBankder(response.data.role);
+    });
   });
 
   return (

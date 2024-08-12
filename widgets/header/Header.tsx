@@ -2,10 +2,10 @@ import React from "react";
 
 import style from "./header.module.css";
 import Link from "next/link";
-import { $token } from "@/shared/lib/api/api";
 import { Span } from "next/dist/trace";
 
 const Header = () => {
+
   return (
     <div className={style.header}>
       <div className={style.logotype}>
@@ -22,7 +22,7 @@ const Header = () => {
           <p>Мой Профиль</p>
         </Link>
         <Link href={"/list-banker"}></Link>
-        {$token ? <Link href={"/sign-in"}></Link> : <span> </span>}
+        {/* {$token ? <Link href={"/sign-in"}></Link> : <span> </span>} */}
       </nav>
     </div>
   );
