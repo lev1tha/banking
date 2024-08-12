@@ -1,17 +1,12 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import style from "@/shared/components/Outlet/outlet.module.css";
 import InputForm from "@/util/input/InputForm";
 import { $api } from "@/shared/lib/api/api";
-import { defaultConfig } from "next/dist/server/config-shared";
 
 interface Option {
   value: string;
   label: string;
-}
-
-interface Shift {
-  user: string;
 }
 
 interface DataOutlet {
@@ -45,43 +40,43 @@ const timeOptions: Option[] = Array.from({ length: 10 }, (_, i) => ({
 
 const Outlet = () => {
   const [dataOutlet, setDataOutlet] = useState<DataOutlet>({});
-  const [onShift, setOnShift] = useState<Shift[]>([]);
   const [days, setDays] = useState<Option[]>([]);
-
-
-  // useEffect(() => {
-  //   $api.get("workschedule/").then((req) => setOnShift(req.data));
-  // }, []);
 
   const handleChangeValueInput = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { id, value } = event.target;
+
     setDataOutlet((prevDataOutlet) => {
-      const newDataOutlet = {
+      let newDataOutlet = {
         ...prevDataOutlet,
         [id]: value,
       };
 
-      if (
-        id === "timeFrom" &&
-        newDataOutlet.timeTo &&
-        newDataOutlet.timeTo <= value
-      ) {
-        newDataOutlet.timeTo = undefined;
+      if (id === "timeFrom") {
+        // Автоматическое добавление одного часа ко времени "от"
+        const nextHour = (parseInt(value.slice(0, 2), 10) + 1)
+          .toString()
+          .padStart(2, "0");
+        const timeToValue = `${nextHour}:00`;
+        newDataOutlet = {
+          ...newDataOutlet,
+          timeTo: timeToValue,
+        };
       }
+
+      if (id === "month") {
+        const daysInMonth = new Date(2024, Number(value), 0).getDate();
+        setDays(
+          Array.from({ length: daysInMonth }, (_, i) => ({
+            value: (i + 1).toString(),
+            label: (i + 1).toString(),
+          }))
+        );
+      }
+
       return newDataOutlet;
     });
-
-    if (id === "month") {
-      const daysInMonth = new Date(2024, Number(value), 0).getDate();
-      setDays(
-        Array.from({ length: daysInMonth }, (_, i) => ({
-          value: (i + 1).toString(),
-          label: (i + 1).toString(),
-        }))
-      );
-    }
   };
 
   const formatBookingDate = (
@@ -92,7 +87,6 @@ const Outlet = () => {
     if (!month || !day || !time) return undefined;
     return `${day.padStart(2, "0")}:${month.padStart(2, "0")}:2024 ${time}`;
   };
-  defaultConfig;
 
   const handleOnSendBooking = () => {
     const booking_start_time = formatBookingDate(
