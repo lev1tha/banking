@@ -12,8 +12,8 @@ interface UserProfile {
   date_of_birth: string;
   phone: string;
   avatar?: string;
-  employee_id?: string;
-  department?: string;
+  experience?: string;
+  position?: string;
   [key: string]: any;
 }
 
@@ -26,8 +26,8 @@ const translations: { [key: string]: string } = {
   date_of_birth: "Дата рождения",
   phone: "Номер телефона",
   avatar: "Аватар",
-  employee_id: "Партия",
-  department: "Вид правления",
+  experience: "Опыт",
+  position: "Вид правления",
 };
 
 const Index: React.FC = () => {
@@ -55,10 +55,9 @@ const Index: React.FC = () => {
     <div className={style.container_profile}>
       <h1>Ваш профиль</h1>
       {viewProfile ? (
-        <div>
+        <div className={style.shape}>
           {viewProfile.avatar && (
             <div className={style.profile_item}>
-              <p>{translations["avatar"]}:</p>
               <img
                 src={viewProfile.avatar}
                 alt="User Avatar"
@@ -66,15 +65,17 @@ const Index: React.FC = () => {
               />
             </div>
           )}
-          {Object.entries(viewProfile).map(
-            ([key, value]) =>
-              key !== "id" &&
-              key !== "avatar" && (
-                <div key={key} className={style.profile_item}>
-                  <p>{translations[key] || key}:</p> <span>{value}</span>
-                </div>
-              )
-          )}
+          <div>
+            {Object.entries(viewProfile).map(
+              ([key, value]) =>
+                key !== "id" &&
+                key !== "avatar" && (
+                  <div key={key} className={style.profile_item}>
+                    <p>{translations[key] || key}:</p> <span>{value}</span>
+                  </div>
+                )
+            )}
+          </div>
         </div>
       ) : (
         <p>Loading...</p>

@@ -1,13 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
-
 import Header from "@/widgets/header/Header";
 import Courses from "@/shared/components/Course";
 import style from "@/shared/styles/home.module.css";
 import Footer from "@/widgets/footer";
-
 import Link from "next/link";
-import { $api } from "@/shared/lib/api/api";
+import { $api, globalAfterCheckerUser } from "@/shared/lib/api/api";
 
 interface UserProfile {
   first_name: string;
@@ -24,11 +22,13 @@ interface UserProfile {
 
 const Home = () => {
   const [viewProfile, setViewProfile] = useState<UserProfile | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
 
     if (!token) {
+      setIsLoading(false);
       return;
     }
 
@@ -37,11 +37,15 @@ const Home = () => {
       .then((response) => {
         setViewProfile(response.data);
         localStorage.setItem("userInfo", JSON.stringify(response.data));
+        setIsLoading(false);
       })
       .catch((err) => {
         console.error("Failed to fetch profile:", err);
+        setIsLoading(false);
       });
   }, []);
+
+  const isLoggedIn = globalAfterCheckerUser();
 
   return (
     <>
@@ -49,7 +53,7 @@ const Home = () => {
       <div className={style.main}>
         <div className={style.mobile}>
           <div className="image">
-            <img src="./assets/image/mobile_bank.png" alt="" />
+            <img src="./assets/image/mobile_bank.png" alt="Mobile bank" />
           </div>
           <div className={style.text}>
             <div className={style.title}>
@@ -89,7 +93,7 @@ const Home = () => {
           </Link>
         </div>
         <div className={style.visual}>
-          <img src="./assets/image/cards.png" alt="" />
+          <img src="./assets/image/cards.png" alt="Cards" />
         </div>
       </div>
       <Footer />

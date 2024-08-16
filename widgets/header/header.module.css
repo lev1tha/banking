@@ -22,6 +22,14 @@
   color: rgb(28, 70, 142);
 }
 
+.navigation p {
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: rgb(28, 70, 142);
+}
+
 @media (max-width: 980px) {
   .header {
     /* justify-content: space-around; */

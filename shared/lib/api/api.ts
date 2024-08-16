@@ -18,3 +18,41 @@ $api.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+
+let isAuthenticated: boolean | null = null;
+let checkInterval: NodeJS.Timeout | null = null;
+
+export const startGlobalChecker = (interval: number = 300000) => {
+  if (checkInterval) {
+    clearInterval(checkInterval);
+  }
+
+  checkInterval = setInterval(async () => {
+    await globalAfterCheckerUser();
+  }, interval);
+};
+
+export const globalAfterCheckerUser = async (): Promise<boolean> => {
+  if (isAuthenticated !== null) {
+    return isAuthenticated;
+  }
+
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    isAuthenticated = false;
+    return isAuthenticated;
+  }
+
+  try {
+    const response = await $api.get("auth/profile");
+    isAuthenticated = response.status === 200 || response.status === 202;
+    return isAuthenticated;
+  } catch (error) {
+    console.error("Request failed:", error);
+    isAuthenticated = false;
+    return isAuthenticated;
+  }
+};
+
+startGlobalChecker();

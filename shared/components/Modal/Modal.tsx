@@ -30,7 +30,6 @@ const Modal: React.FC<ModalPropsT> = ({ isSelectedDay }) => {
         Выбранный день: <h1>{isSelectedDay}</h1>
       </span>
       <div className="modal_information">
-        {/* {error || ( */}
         <>
           <table border={1} className={style.modal_table}>
             <tr>
@@ -67,7 +66,6 @@ const Modal: React.FC<ModalPropsT> = ({ isSelectedDay }) => {
             Забранировать в этот день
           </button>
         </>
-        {/* )} */}
       </div>
     </div>
   );

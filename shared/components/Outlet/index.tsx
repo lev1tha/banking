@@ -54,7 +54,6 @@ const Outlet = () => {
       };
 
       if (id === "timeFrom") {
-        // Автоматическое добавление одного часа ко времени "от"
         const nextHour = (parseInt(value.slice(0, 2), 10) + 1)
           .toString()
           .padStart(2, "0");
