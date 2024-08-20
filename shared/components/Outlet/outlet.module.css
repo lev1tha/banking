@@ -1,60 +1,69 @@
 .outlet_container {
   display: flex;
   flex-direction: column;
-}
-
-.outlet_container input {
-  width: 180px;
-  margin-top: 24px;
-  padding: 14px 18px;
-  border-radius: 16px;
-  border: 0.4px solid rgb(146, 146, 146);
-  font-family: "Montserrat", sans-serif;
-  font-size: 16px;
-}
-
-.outlet_container input:first-child {
-  margin-top: 0;
+  max-width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
 }
 
 .outlet_formDate {
   display: flex;
-  align-items: center;
-  flex: 1;
-  gap: 14px;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .outlet_select {
-  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
-.outlet_select .selectTime {
-  padding: 8px;
-  border-radius: 14px;
-  width: 80px;
+.outlet_select label {
+  margin-bottom: 8px;
   font-family: "Montserrat", sans-serif;
-  font-size: 16px;
-  font-weight: 300;
-  margin: 0;
+  font-size: 14px;
+  color: rgb(28, 70, 142);
 }
 
-.outlet_select select {
-  margin-top: 20px;
-  width: 160px;
-  padding: 6px;
-  border-radius: 14px;
+.outlet_select select,
+.outlet_select input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgb(146, 146, 146);
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
-  font-weight: 300;
+  width: 100%;
 }
 
 .button {
-  margin-top: 22px;
+  margin-top: 20px;
+  padding: 12px 0;
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
-  padding: 14px 0;
-  border-radius: 14px;
-  border: 0.3px solid rgb(163, 163, 163);
-  background-color: #ffdd2c;
+  text-align: center;
   color: rgb(28, 70, 142);
+  background-color: #ffdd2c;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #ffcc00;
+}
+
+@media (min-width: 768px) {
+  .outlet_formDate {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .outlet_select {
+    width: calc(50% - 8px);
+  }
+
+  .outlet_select select,
+  .outlet_select input {
+    width: 100%;
+  }
 }

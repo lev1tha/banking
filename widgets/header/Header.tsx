@@ -2,10 +2,12 @@
 import React, { useEffect, useState } from "react";
 import style from "./header.module.css";
 import Link from "next/link";
+import MobileMenu from "@/shared/components/MobileNav";
 import { globalAfterCheckerUser } from "@/shared/lib/api/api";
 
 const Header = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -18,8 +20,11 @@ const Header = () => {
 
   const handleLogoutUser = () => {
     localStorage.clear();
+    setIsAuthenticated(false);
+  };
 
-    setIsAuthenticated((prev) => !prev);
+  const handleToggleMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -27,7 +32,15 @@ const Header = () => {
       <div className={style.logotype}>
         <img src="/assets/image/rskBank.png" alt="logotype" />
       </div>
-      <nav className={style.navigation}>
+      <button
+        className={`${style.menuButton} ${isMobileMenuOpen ? "open" : ""}`}
+        onClick={handleToggleMenu}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav className={`${style.navigation} ${isMobileMenuOpen ? "open" : ""}`}>
         <Link href={"/date"}>
           <p>Календарь</p>
         </Link>
@@ -50,6 +63,7 @@ const Header = () => {
           </Link>
         )}
       </nav>
+      {isMobileMenuOpen && <MobileMenu onClose={handleToggleMenu} />}
     </div>
   );
 };
