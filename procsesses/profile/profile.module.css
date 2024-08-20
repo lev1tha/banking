@@ -1,10 +1,9 @@
 .container_profile {
   border-radius: 18px;
-
   width: 600px;
-
   padding: 24px 28px;
   box-shadow: 1px 1px 15px -5px;
+  margin: 0 autoF;
 }
 
 .container_profile h1 {
@@ -24,10 +23,21 @@
 .shape {
   display: flex;
   gap: 15%;
+  flex-wrap: wrap;
+}
+
+.profile_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
 }
 
 .profile_item img {
-  border-radius: 46%;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
 }
 
 .profile_item p {
@@ -47,4 +57,82 @@
 .avatar {
   width: 200px;
   height: 180px;
+}
+
+@media (max-width: 768px) {
+  .container_profile {
+    width: 90%;
+    padding: 16px;
+  }
+
+  .container_profile h1 {
+    font-size: 28px;
+    margin-bottom: 18px;
+  }
+
+  .container_profile p {
+    font-size: 18px;
+    margin-top: 14px;
+  }
+
+  .shape {
+    gap: 10%;
+  }
+
+  .profile_item img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .profile_item p {
+    font-size: 16px;
+  }
+
+  .profile_item span {
+    font-size: 18px;
+  }
+
+  .avatar {
+    width: 150px;
+    height: 135px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container_profile {
+    width: 95%;
+    padding: 12px 16px;
+  }
+
+  .container_profile h1 {
+    font-size: 24px;
+    margin-bottom: 14px;
+  }
+
+  .container_profile p {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+  .shape {
+    gap: 5%;
+  }
+
+  .profile_item img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .profile_item p {
+    font-size: 14px;
+  }
+
+  .profile_item span {
+    font-size: 16px;
+  }
+
+  .avatar {
+    width: 120px;
+    height: 108px;
+  }
 }
